@@ -4,12 +4,13 @@
   <section #nodata  class="w-full h-full" *ngIf="!recipeData?.length">
 
     <div class="w-full h-20 flex">
-      <div class="h-full w-1/2 bg-slate-600 rounded-[28px] rounded-br-none">
+      <div class="h-full w-1/4 md:w-1/2 bg-slate-600 rounded-[28px] rounded-br-none">
         <div class="h-full w-full bg-red-100 rounded-3xl flex items-center">
-          <div class="flex font-extrabold text-3xl pl-4"> <p class="text-orange-400">Recipe</p><p class="text-orange-500">EZ</p> </div>
+          <img src="../../../assets/images/logoLg.png" class="h-16 pl-4 hidden md:block" alt="">
+          <img src="../../../assets/images/logoSm.png" alt="" class="h-14 sm:h-16 block md:hidden pl-2">
         </div>
       </div>
-      <div class="h-full w-1/2 bg-red-100 rounded-[28px]">
+      <div class="h-full w-3/4 md:w-1/2 bg-red-100 rounded-[28px]">
         <div class="h-full w-full bg-slate-600 rounded-3xl rounded-b-none flex items-center justify-center px-4 py-4 ">
           <div class="relative text-gray-600 focus-within:text-gray-400 h-full w-full">
             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -25,8 +26,8 @@
     </div>
 
     <div class="w-full h-[90%] rounded-3xl rounded-tr-none bg-slate-600  flex flex-col md:flex-row items-center justify-center overflow-hidden">
-      <img src="../../../assets/svg/cooking.svg" alt="" class="h-4/5 order-last md:order-first">
-      <div class="h-full w-5/6 md:w-1/4 flex items-start pt-8 relative ">
+      <img src="../../../assets/svg/cooking.svg" alt="" class="h-1/2 md:h-4/5 order-last md:order-first">
+      <div class="h-fit md:h-full w-4/6 md:w-1/4 flex items-start md:pt-8 relative ">
         <img src="../../../assets/svg/dialogue.png" alt="">
       </div>
     </div>
@@ -37,13 +38,14 @@
   <!-- With data  -->
   <section #withData class="w-full h-full" *ngIf="recipeData?.length">
     <div class="w-full h-20 flex">
-      <div class="h-full w-1/2 bg-orange-500/50 rounded-[28px] rounded-br-none">
+      <div class="h-full w-1/4 md:w-1/2 bg-orange-300 rounded-[28px] rounded-br-none">
         <div class="h-full w-full bg-red-100 rounded-3xl flex items-center">
-          <div class="flex font-extrabold text-3xl pl-4"> <p class="text-orange-400">Recipe</p><p class="text-orange-500">EZ</p> </div>
+          <img src="../../../assets/images/logoLg.png" class="h-16 pl-4 hidden md:block" alt="">
+          <img src="../../../assets/images/logoSm.png" alt="" class="h-14 sm:h-16 block md:hidden pl-2">
         </div>
       </div>
-      <div class="h-full w-1/2 bg-red-100 rounded-[28px]">
-        <div class="h-full w-full bg-orange-500/50 rounded-3xl rounded-b-none flex items-center justify-center px-4 py-4 ">
+      <div class="h-full w-3/4 md:w-1/2 bg-red-100 rounded-[28px]">
+        <div class="h-full w-full bg-orange-300 rounded-3xl rounded-b-none flex items-center justify-center px-4 py-4 ">
           <div class="relative text-gray-600 focus-within:text-gray-400 h-full w-full">
             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
               <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
@@ -57,23 +59,24 @@
       </div>
     </div>
 
-    <div class="w-full h-fit rounded-3xl rounded-tr-none bg-orange-500/50 overflow-hidden px-4 py-8 flex">
+    <div class="w-full h-fit rounded-3xl rounded-tr-none bg-orange-300 overflow-hidden px-4 py-8 flex">
       <div class="flex flex-wrap items-center content-start justify-center w-full h-full gap-2 mx-auto scroll-mb-6 sm:gap-5 md:gap-9 ">
         <div class="" *ngFor="let food of recipeData">
           <!-- card -->
           <section
-            class="flex flex-col overflow-hidden text-[#2D242] bg-gray-50  rounded-md shadow-xl min-w-full sm:min-w-fit sm:max-w-fit max-h-[385px] sm:min-h-[385px] hover:opacity-[0.9] "
+            class="transition-all duration-500 transform hover:-translate-y-1 sm:hover:-translate-y-2 lg:hover:-translate-y-4 flex flex-col overflow-hidden text-[#2D242] bg-orange-50 cursor-pointer rounded-md shadow-xl
+              hover:shadow-2xl min-w-full sm:min-w-fit sm:max-w-fit max-h-[385px] sm:min-h-[385px] hover:opacity-[0.9]"
             [routerLink]="['/details',food._links.self.href]">
             <a>
               <img alt="Placeholder" loading="lazy"
-                class=" w-[16rem] h-[13rem] sm:min-w-[272px] sm:max-w-[272px] object-cover min-h-[195px] max-h-[195px] hover:ease-linear hover:scale-105"
+                class=" w-[16rem] h-[13rem] sm:min-w-[272px] sm:max-w-[272px] object-cover min-h-[195px] max-h-[195px] transform rotate-12 rounded-sm scale-[1.3]"
                 src="{{ food.recipe.image}}" [alt]="food.recipe.label" />
             </a>
 
             <section
-              class="flex flex-col leading-tight p-2 bg-secondary_bg md:p-4  w-[16rem] h-[4rem] sm:min-w-[272px] sm:max-w-[272px] sm:min-h-[199px] max-h-[199px]">
+              class="flex flex-col leading-tight p-2 md:p-4  w-[16rem] h-[4rem] sm:min-w-[272px] sm:max-w-[272px] sm:min-h-[199px] max-h-[199px]">
               <div class="flex items-center justify-between leading-tight">
-                <h1 class="text-lg h-14 line-clamp-2">
+                <h1 class="text-lg h-14 line-clamp-2 text-gray-900 font-bold z-50 rounded-md backdrop-blur-lg pr-1">
                   <a class="no-underline" href="#">
                     {{ food.recipe.label }}
                   </a>
@@ -82,12 +85,12 @@
               </div>
 
               <div
-                class=" left-[0.9rem] pb-[0.3rem] px-0 text-orange-600 text-[1.1rem] w-fit inline-block t  mr-[0.3rem] py-[0.2rem] ]">
+                class=" left-[0.9rem] pb-[0.3rem] px-0 text-orange-400/75 text-[1.1rem] w-fit inline-block t  mr-[0.3rem] py-[0.2rem] ]">
                 <span> {{ food.recipe.totalDaily.ENERC_KCAL.quantity|number:'1.0-0' }} Cal</span>
 
               </div>
               <div
-                class=" left-[0.9rem] pb-[0.3rem] px-0 text-[#414141] text-[1.1rem] w-fit inline-block t  mr-[0.3rem] py-[0.2rem] ]">
+                class=" left-[0.9rem] pb-[0.3rem] px-0 text-gray-600 text-[1.1rem] w-fit inline-block t  mr-[0.3rem] py-[0.2rem] ]">
                 <span> {{ food.recipe.mealType}}</span>
               </div>
               <div class="hidden sm:flex justify-between mt-[0.7rem] py-2 items-start">
@@ -96,7 +99,7 @@
                   <span>🕐</span> {{ food.recipe.totalTime }} min
                 </div>
                 <div
-                  class=" left-[0.9rem] pb-[0.3rem] px-0 text-[#414141] text-[1.1rem] w-fit inline-block t  mr-[0.3rem] py-[0.2rem] ]">
+                  class=" left-[0.9rem] pb-[0.3rem] px-0 text-gray-600 text-[1.1rem] w-fit inline-block t  mr-[0.3rem] py-[0.2rem] ]">
                   <span> {{ food.recipe.cuisineType}}</span>
 
                 </div>
@@ -116,3 +119,6 @@
 
 </section>
 
+
+
+          <!-- <div class="flex flex-col md:flex-row font-extrabold text-2xl md:text-3xl pl-1 md:pl-4"> <p class="text-orange-400">Recipe</p><p class="text-orange-500">EZ</p> </div> -->
